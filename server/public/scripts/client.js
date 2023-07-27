@@ -31,21 +31,29 @@ function addKoala() {
       readyForTransfer: `${koalaReadyForTransfer}`,
       notes: `${koalaNotesIn}`,
     };
-    console.log( 'in addButton on click', koalaToSend );
+    $.ajax({
+      type: 'POST',
+      url: '/TBD',
+      data: koalaToSend,
+      }).then(function(response) {
+        console.log('Response from server.', response);
+        render();
+      }).catch(function(error) {
+        console.log('Error in POST', error)
+        alert('Unable to add book at this time. Please try again later.');
+      });
 
-       
-    saveKoala( koalaToSend );
-    $("input").val('');
-    render()
-  }; 
+      console.log( 'in addButton on click', koalaToSend );
 
-
+      $("input").val('');
+      render()
+  }
 
 //-----------------------------------------------------------------------
 
   // This is our PUT
 // call saveKoala with the new obejct
-function saveKoala( ){
+function transferKoala( ){
   console.log( 'in saveKoala' );
  
   // ajax call to server to get koalas
