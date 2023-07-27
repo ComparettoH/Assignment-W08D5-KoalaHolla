@@ -46,7 +46,6 @@ function addKoala() {
       console.log( 'in addButton on click', koalaToSend );
 
       $("input").val('');
-      render()
   }
 
 //-----------------------------------------------------------------------
