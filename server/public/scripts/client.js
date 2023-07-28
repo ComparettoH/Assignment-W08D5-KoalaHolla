@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -6,7 +8,7 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
   $( '#addButton' ).on( 'click', addKoala)
-  $( '#viewKoalas' ).on( 'click','.btn-ready', saveKoala)
+  $( '#viewKoalas' ).on( 'click','.btn-ready', transferKoala) 
 
 }); // end doc ready
 let koalas;
@@ -83,9 +85,10 @@ function getKoalas(){
   // $.ajax({
   //   type: 'GET',
   //   url: '/TBD'
-  // }).then(function(response) {
+  // }).then(function(response) {    
   //   console.log(response);
-  //   render(response);
+     //koalas = response;
+  //   render(koalas);
   // }).catch(function(error){
   //   console.log('error in GET', error);
   // });
@@ -96,7 +99,7 @@ function getKoalas(){
 //-----------------------------------------------------------------------
 // This is our Render
 
-function render() {
+function render() { 
   for (let i = 0; i < koalas.length; i += 1) {
       let koala = koalas[i];
       let newRow = $(`
@@ -106,10 +109,8 @@ function render() {
         <td>${koala.gender}</td>
         <td>${koala.readyForTransfer}</td>
         <td>${koala.notes}</td>
-        <td>
-          <button class="btn-ready">
-              Mark For Ready
-          </button>
+        <td class="transferBtn">
+          
         </td>
         <td>
           <button class="btn-Delete">
@@ -118,7 +119,14 @@ function render() {
         </td>
       </tr>
       `)
-
+      if (koala.readyForTransfer == "FALSE") {
+        $('.transferBtn').append(
+          $(`<button class="btn-ready">
+            Mark For Ready
+          </button>`))
+      }
+      
+  
 newRow.data('id', koala.id);
 
   $('#viewKoalas').append(newRow);
