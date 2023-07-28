@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 
 console.log( 'js' );
 
@@ -23,9 +23,7 @@ function addKoala() {
       let koalaReadyForTransfer = $('#readyForTransferIn').val();
       let koalaNotesIn = $('#notesIn').val();
     
-    // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
+    
     let koalaToSend = {
       koalaName: `${koalaName}`,
       age: `${koalaAge}`,
@@ -82,16 +80,16 @@ function transferKoala( ){
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  // $.ajax({
-  //   type: 'GET',
-  //   url: '/TBD'
-  // }).then(function(response) {    
-  //   console.log(response);
-     //koalas = response;
-  //   render(koalas);
-  // }).catch(function(error){
-  //   console.log('error in GET', error);
-  // });
+  $.ajax({
+    type: 'GET',
+    url: '/TBD'
+  }).then(function(response) {    
+    console.log(response);
+     koalas = response;
+    render(koalas);
+  }).catch(function(error){
+    console.log('error in GET', error);
+  });
 } // end getKoalas
 
 
