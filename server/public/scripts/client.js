@@ -33,7 +33,7 @@ function addKoala() {
     };
     $.ajax({
       type: 'POST',
-      url: '/TBD',
+      url: '/koalas',
       data: koalaToSend,
       }).then(function(response) {
         console.log('Response from server.', response);
@@ -82,7 +82,7 @@ function getKoalas(){
   // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
-    url: '/TBD'
+    url: '/koalas'
   }).then(function(response) {    
     console.log(response);
      koalas = response;
