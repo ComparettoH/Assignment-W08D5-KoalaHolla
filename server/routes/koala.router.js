@@ -30,7 +30,7 @@ router.post('/', (req,res) => {
     const readyToTransfer = req.body.ready_to_transfer;
     const notes = req.body.notes;
 
-    const queryParams = [name,gender,age, readyToTransfer,notes];
+    const queryParams = [name, gender, age, readyToTransfer, notes];
     const queryText = `INSERT INTO "koalas" ("name","gender","age","ready_to_transfer","notes")
                     VALUES($1, $2, $3, $4, $5);`
     
@@ -47,7 +47,6 @@ router.post('/', (req,res) => {
 
 // PUT
 router.put('/:id', (req, res) => {
-    res.sendStatus(200)
     console.log(req.params.id)
 
     // get id from params
