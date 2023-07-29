@@ -24,10 +24,10 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
     console.log('inside the post', req.body);
     //maybe id goes here
-    const name = req.body.name;
+    const name = req.body.koalaName;
     const gender = req.body.gender;
     const age =req.body.age;
-    const readyToTransfer = req.body.ready_to_transfer;
+    const readyToTransfer = req.body.readyForTransfer;
     const notes = req.body.notes;
 
     const queryParams = [name, gender, age, readyToTransfer, notes];
